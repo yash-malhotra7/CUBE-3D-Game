@@ -12,6 +12,7 @@ public class Gamemanager : MonoBehaviour
 
     public GameObject LevelCompleteUI;
     public GameObject GameOver;
+    public GameObject DonePanel;
 
     public bool GameHasEnded = false;
     public float restartDelay = 1f;
@@ -64,13 +65,26 @@ public class Gamemanager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void PlayGame()
+    public void DisableDone()
     {
-        SceneManager.LoadScene(1);
+        DonePanel.SetActive(false);
+    }
+
+    public void ResetScores()
+    {
+        gamePlayUI.playerHighScore = 9999f;
+        PlayerPrefs.DeleteAll();
+        Debug.Log("All scores reset");
+        Invoke("DisableDone", 1.5f);
     }
 }

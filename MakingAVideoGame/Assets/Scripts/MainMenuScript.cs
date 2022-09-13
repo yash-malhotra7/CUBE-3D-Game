@@ -22,5 +22,6 @@ public class MainMenuScript : MonoBehaviour
         gamePlayUI.playerHighScore = 0f;
         PlayerPrefs.DeleteAll();
         Debug.Log("All scores reset");
+        
     }
 }
