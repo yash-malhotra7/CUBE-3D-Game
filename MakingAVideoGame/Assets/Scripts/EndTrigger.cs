@@ -5,10 +5,10 @@ using UnityEngine;
 public class EndTrigger : MonoBehaviour
 {
     public Gamemanager gameManager;
-
+    public bool gameHasEnded = false;
     private void OnTriggerEnter()
     {
-        gameManager.CompleteLevel();
         gameManager.LevelHasCompleted();
+        gameHasEnded = true;
     }
 }

@@ -1,18 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GamePlayUI gamePlayUI;
+
     public Rigidbody rb;
     public float forwardForce = 700f;
     public float sidewaysForce = 500f;
     public PlayerMovement movement;
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Start()
     {
-        rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        movement.enabled = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {        
+
+        if(Input.GetKey("w"))
+        {
+            rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        }
 
         if(Input.GetKey("d"))
         {
@@ -24,9 +36,14 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
-        if(rb.position.y < -1f)
+        if (Input.GetKey("s"))
         {
-            FindObjectOfType<Gamemanager>().EndGame();
+            rb.AddForce(0, 0, -forwardForce * Time.deltaTime);
+        }
+
+        if (rb.position.y < -0.5f)
+        {
+            FindObjectOfType<Gamemanager>().PlayerFell();
             movement.enabled = false;
         }
     }
