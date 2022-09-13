@@ -42,16 +42,14 @@ public class GamePlayUI : MonoBehaviour
             {
                 playerTimeHasEnded = true;
             }
-
-
-            if (playerTime < playerHighScore)
-            {
-                playerHighScore = playerTime;
-            }
         }
 
         if(playerTimeHasEnded)
         {
+            if (playerTime < playerHighScore)
+            {
+                playerHighScore = playerTime;
+            }
             SaveHighScore();
             Debug.Log("High Score = " + playerHighScore.ToString("0.##"));
         }
