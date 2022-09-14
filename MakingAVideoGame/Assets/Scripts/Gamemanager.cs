@@ -20,14 +20,18 @@ public class Gamemanager : MonoBehaviour
     public Text countDownTimerText;
     public Text playertimeText;
     public Text highScoreText;
+    public Text medalScoreText;
 
     private void Update()
-    {
-        countDownTimerText.text = gamePlayUI.countDownTime.ToString("0");
-        playertimeText.text = gamePlayUI.playerTime.ToString("0.##");
-        if (gamePlayUI.playerHighScore != 9999f)
+    { if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
         {
-            highScoreText.text = gamePlayUI.playerHighScore.ToString("0.###");
+            countDownTimerText.text = gamePlayUI.countDownTime.ToString("0");
+            playertimeText.text = gamePlayUI.playerTime.ToString("0.##");
+            if (gamePlayUI.playerHighScore != 9999f)
+            {
+                highScoreText.text = gamePlayUI.playerHighScore.ToString("Player: " + "0.##");
+            }
+            medalScoreText.text = gamePlayUI.medalScore.ToString("Medal: " + "0.##");
         }
     }
 

@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class MainMenuScript : MonoBehaviour
 {
-    public GameObject DonePanel;
-
     public GamePlayUI gamePlayUI;
-
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(1);
-    }
+    public GameObject Donepanel;
+    public GameObject resetPanel;
 
     public void QuitGame()
     {
@@ -26,7 +20,8 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("All scores reset");
     }
 
-    public void CloseDonePanel()
+    public void RemoveDonePanel()
     {
-        DonePanel.SetActive(false);
+        Donepanel.SetActive(false);
     }
+}

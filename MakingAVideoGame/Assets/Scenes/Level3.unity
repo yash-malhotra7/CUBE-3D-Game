@@ -2179,6 +2179,8 @@ MonoBehaviour:
   countDownHasFinished: 0
   playerTime: 0
   playerHighScore: 0
+  medalScore: 12
+  levelNumber: 3
   playerTimeHasEnded: 0
 --- !u!114 &978072687
 MonoBehaviour:
@@ -2192,8 +2194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32215034fa6396241b7479aee66de4a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DonePanel: {fileID: 0}
   gamePlayUI: {fileID: 0}
+  Donepanel: {fileID: 0}
+  resetPanel: {fileID: 0}
 --- !u!1 &1026355238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,7 +2748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1307788290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4867,7 +4870,7 @@ PrefabInstance:
     - target: {fileID: 159797859516695628, guid: 207b3a4665e74f94fa7628c129d12b8d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 207b3a4665e74f94fa7628c129d12b8d, type: 3}

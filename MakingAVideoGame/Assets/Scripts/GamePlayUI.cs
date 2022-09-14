@@ -12,57 +12,77 @@ public class GamePlayUI : MonoBehaviour
     public float countDownTime = 3f;
     public bool countDownHasFinished = false;
     public float playerTime = 00.00f;
-    public float playerHighScore = 9999f;
+    public float playerHighScore;
+    public float medalScore;
+    public int levelNumber;
     public bool playerTimeHasEnded = false;
 
     private void Start()
     {
-        LoadHighScore();
-        gamemanager.playertimeText.gameObject.SetActive(false);
+        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+        {
+            Debug.Log("Level" + (SceneManager.GetActiveScene().buildIndex));
+            playerHighScore = 9999f;
+
+            LoadHighScore();
+            gamemanager.playertimeText.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
-        if (!countDownHasFinished)
+        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
         {
-            countDownTime -= Time.deltaTime;
-            if (countDownTime < 0f)
+            if (!countDownHasFinished)
             {
-                countDownHasFinished = true;
-                gamemanager.countDownTimerText.gameObject.SetActive(false);
-                playerMovement.movement.enabled = true;
+                countDownTime -= Time.deltaTime;
+                if (countDownTime < 0f)
+                {
+                    countDownHasFinished = true;
+                    gamemanager.countDownTimerText.gameObject.SetActive(false);
+                    playerMovement.movement.enabled = true;
+                }
             }
-        }
 
-        if (countDownHasFinished && !playerTimeHasEnded)
-        {
-            gamemanager.playertimeText.gameObject.SetActive(true);
-            playerTime += Time.deltaTime;
-            if (endTrigger.gameHasEnded)
+            if (countDownHasFinished && !playerTimeHasEnded)
             {
-                playerTimeHasEnded = true;
+                gamemanager.playertimeText.gameObject.SetActive(true);
+                playerTime += Time.deltaTime;
+                if (endTrigger.gameHasEnded)
+                {
+                    playerTimeHasEnded = true;
+                }
             }
-        }
 
-        if(playerTimeHasEnded)
-        {
-            if (playerTime < playerHighScore)
+            if (playerTimeHasEnded)
             {
-                playerHighScore = playerTime;
+                if (playerTime < playerHighScore)
+                {
+                    playerHighScore = playerTime;
+                }
+                SaveHighScore();
+                Debug.Log("High Score = " + playerHighScore.ToString("0.##"));
+                if(playerTime < medalScore)
+                {
+                    PlayerPrefs.SetInt("passed" + levelNumber, 1);
+                }
             }
-            SaveHighScore();
-            Debug.Log("High Score = " + playerHighScore.ToString("0.##"));
         }
 
     }
 
     public void SaveHighScore()
     {
-        PlayerPrefs.SetFloat("HighScore" + SceneManager.GetActiveScene().buildIndex, playerHighScore);
+        if (SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+        {
+            PlayerPrefs.SetFloat("HighScore" + SceneManager.GetActiveScene().buildIndex, playerHighScore);
+        }
     }
 
     public void LoadHighScore()
-    {
-        playerHighScore = PlayerPrefs.GetFloat("HighScore" + SceneManager.GetActiveScene().buildIndex, 99999f);
+    {if(SceneManager.GetActiveScene().buildIndex - 1 >= 0)
+        {
+            playerHighScore = PlayerPrefs.GetFloat("HighScore" + SceneManager.GetActiveScene().buildIndex, 9999f);
+        }
     }
 }
