@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
+    public GameObject DonePanel;
+
     public GamePlayUI gamePlayUI;
 
     public void PlayGame()
@@ -19,9 +21,12 @@ public class MainMenuScript : MonoBehaviour
 
     public void ResetScores()
     {
-        gamePlayUI.playerHighScore = 0f;
+        gamePlayUI.playerHighScore = 9999f;
         PlayerPrefs.DeleteAll();
         Debug.Log("All scores reset");
-        
     }
-}
+
+    public void CloseDonePanel()
+    {
+        DonePanel.SetActive(false);
+    }

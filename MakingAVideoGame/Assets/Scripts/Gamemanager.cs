@@ -64,27 +64,4 @@ public class Gamemanager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
-    public void DisableDone()
-    {
-        DonePanel.SetActive(false);
-    }
-
-    public void ResetScores()
-    {
-        gamePlayUI.playerHighScore = 9999f;
-        PlayerPrefs.DeleteAll();
-        Debug.Log("All scores reset");
-        Invoke("DisableDone", 1.5f);
-    }
 }
