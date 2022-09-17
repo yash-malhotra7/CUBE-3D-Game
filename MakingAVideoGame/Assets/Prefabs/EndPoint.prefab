@@ -108,3 +108,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6475484914995591633, guid: bf2ab82431497a14fa608f4ac40d9635,
     type: 3}
+  gameHasEnded: 0

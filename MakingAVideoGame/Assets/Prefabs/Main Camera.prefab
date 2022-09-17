@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6261807978760419518}
   - component: {fileID: 6261807978760419519}
   - component: {fileID: 6261807978760419488}
-  - component: {fileID: 6261807978760419517}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -45,9 +44,10 @@ Camera:
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -83,17 +83,3 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6261807978760419489}
   m_Enabled: 1
---- !u!114 &6261807978760419517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6261807978760419489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2da4916ff3317c48a245016c8872243, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  offset: {x: 0, y: 1, z: -5}

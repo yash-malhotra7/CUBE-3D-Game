@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class LevelSelector : MonoBehaviour
 {
+    public Animator transition;
+
     public int level;
     public Button[] levelButtons;
 
@@ -27,8 +29,17 @@ public class LevelSelector : MonoBehaviour
 
     }
 
-    public void PlayLevel()
+    public void loadLevel()
     {
-        SceneManager.LoadScene("Level" + level);
+        StartCoroutine(loadLevelScene());
+    }
+
+    IEnumerator loadLevelScene()
+    {
+        transition.SetTrigger("ButtonClick");
+
+        yield return new WaitForSeconds(0.99f);
+
+        SceneManager.LoadScene(level);
     }
 }

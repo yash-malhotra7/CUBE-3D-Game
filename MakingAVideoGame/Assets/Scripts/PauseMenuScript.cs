@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenuScript : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public Animator transition;
 
     public static bool gameIsPaused = false;
 
@@ -38,16 +39,34 @@ public class PauseMenuScript : MonoBehaviour
 
     }
 
-    public void restartGame()
+    public void RestartThisLevel()
     {
+        StartCoroutine(loadLevelAgain());
+    }
+
+    IEnumerator loadLevelAgain()
+    {
+        transition.SetTrigger("LevelBtnPress");
+
+        yield return new WaitForSeconds(0.99f);
+
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void YesBtn()
+    public void LoadMainMenu()
     {
+        StartCoroutine(LoadMainMenuScene());
+    }
+
+    IEnumerator LoadMainMenuScene()
+    {
+        transition.SetTrigger("LevelBtnPress");
+
+        yield return new WaitForSeconds(0.99f);
+
         SceneManager.LoadScene(0);
         pauseMenuUI.SetActive(false);
         gameIsPaused = false;

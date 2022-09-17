@@ -13,7 +13,7 @@ public class GamePlayUI : MonoBehaviour
     public bool countDownHasFinished = false;
     public float playerTime = 00.00f;
     public float playerHighScore;
-    public float medalScore;
+    public float GoldMedal;
     public int levelNumber;
     public bool playerTimeHasEnded = false;
 
@@ -48,6 +48,7 @@ public class GamePlayUI : MonoBehaviour
             {
                 gamemanager.playertimeText.gameObject.SetActive(true);
                 playerTime += Time.deltaTime;
+
                 if (endTrigger.gameHasEnded)
                 {
                     playerTimeHasEnded = true;
@@ -56,13 +57,14 @@ public class GamePlayUI : MonoBehaviour
 
             if (playerTimeHasEnded)
             {
+                playerMovement.movement.enabled = false;
                 if (playerTime < playerHighScore)
                 {
                     playerHighScore = playerTime;
                 }
                 SaveHighScore();
                 Debug.Log("High Score = " + playerHighScore.ToString("0.##"));
-                if(playerTime < medalScore)
+                if(playerTime < GoldMedal)
                 {
                     PlayerPrefs.SetInt("passed" + levelNumber, 1);
                 }
